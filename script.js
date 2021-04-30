@@ -15,12 +15,12 @@ const fieldsCombinationsToWin = [
     [2, 4, 6]
 ]; // Kombinationen der Felder um zu gewinnen
 
-let isBotActive = true; // true - Spieler 2 ist ein Bot || false - Spieler 2 ist ein Mensch
+let isBotActive = false; // true - Spieler 2 ist ein Bot || false - Spieler 2 ist ein Mensch
 let gameOver = false;
 let currentPlayer = 1;
 
-let fieldImgPaths = [   './img/cross.png',  // Player 1
-                        './img/circle.png'  // Player 2
+let markerCharacters = [    'X',    // Player 1
+                            'O'     // Player 2
 ];
 
 function fieldPressed(fieldNumber) {
@@ -63,10 +63,10 @@ function changeCurrentPlayer() {
 function changeImgForUnsettedFields() {
     // Ändert die img.src passend zum aktuellen Spieler
     let unsettedFields = document.getElementsByClassName('field-not-setted');
-    let imgPathForCurrentPlayer = fieldImgPaths[currentPlayer - 1];
+    let playerCharacter = markerCharacters[currentPlayer - 1];
 
     for (let i = 0; i < unsettedFields.length; i++) {
-        unsettedFields[i].src = imgPathForCurrentPlayer;
+        unsettedFields[i].innerHTML = playerCharacter;
     }
 }
 
@@ -140,7 +140,6 @@ function getEmptyFields() {
 }
 
 function isOwnerOnField(fieldNumber, player) {
-    console.log('Feld', fieldOwnerArray[fieldNumber]);
     return fieldOwnerArray[fieldNumber] == player;
 }
 

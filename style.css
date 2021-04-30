@@ -1,8 +1,11 @@
+body {
+    background-color: rgb(29, 28, 66);
+}
 
 /* draw playing field grid*/
 
 table {
-    background-color: white;
+    background-color: rgb(96, 93, 190);
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -31,13 +34,14 @@ table tr td:last-child {
 
 /* ------------- */
 
-
+/* field control */
 .field-not-setted {
     opacity: 0;
 }
 
 .field-not-setted:hover {
     opacity: 0.2;
+    cursor: pointer;
 }
 
 .field-setted {
@@ -46,4 +50,22 @@ table tr td:last-child {
 
 .field-invisible {
     opacity: 0;
+}
+
+/*-----------------*/
+
+#game-sceen {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+}
+
+td[class^='field-'] {
+    font-size: min(15vh, 15vw);
+    width: min(15vh, 15vw);
+    height: min(15vh, 15vw);
+    text-align: center;
+    cursor: default;
+    color: white;
 }
