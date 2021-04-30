@@ -1,11 +1,11 @@
 body {
-    background-image: url('./img/background.jpg');
+    margin: 0;
 }
 
 /* draw playing field grid*/
 
 table {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.07);
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -60,6 +60,11 @@ table tr td:last-child {
     width: 100vw;
     display: flex;
     align-items: center;
+    background-image: url('./img/background.jpg');
+    background-repeat: repeat;
+    background-size: contain;
+    animation: scrolling-background 30s ease-in-out infinite;
+    animation-direction: alternate;
 }
 
 td[class^='field-'] {
@@ -123,9 +128,19 @@ td[class^='field-'] {
         transform: translateX(1rem);
     }
     80% {
-        transform: translateX(0-1rem);
+        transform: translateX(-1rem);
     }
     100% {
         transform: translateX(0);
+    }
+}
+
+
+@keyframes scrolling-background {
+    from {
+        background-position-x: -250%;
+    }
+    to {
+        background-position-x: 250%;
     }
 }
