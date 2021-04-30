@@ -19,7 +19,7 @@ const SWIGGLE_AUDIO = new Audio('./sound/swiggle.wav');
 const FADE_OUT_AUDIO = new Audio('./sound/fade_out.wav');
 const FIELD_LOCKED_AUDIO = new Audio('./sound/field_locked.wav');
 
-let isBotActive = false; // true - Spieler 2 ist ein Bot || false - Spieler 2 ist ein Mensch
+let isBotActive = true; // true - Spieler 2 ist ein Bot || false - Spieler 2 ist ein Mensch
 let gameOver = false;
 let currentPlayer = 1;
 let isAnimationPlaying = false;
@@ -49,7 +49,11 @@ function fieldPressed(fieldNumber) {
     changeImgForUnsettedFields();
     if (isBotActive) {
         deactivateMouseover();
-        botSelectField();
+        setTimeout(() => {
+            botSelectField();
+        }, 500);
+        
+        
     }
 }
 
@@ -91,7 +95,7 @@ function showWinningFields(winningFields) {
             let field = document.getElementById('field-' + winningFields[i]);
             field.classList.add('field-of-winning-row');
             FIELD_LOCKED_AUDIO.play()
-        }, 700 * (i+1));
+        }, 600 * (i+1));
     }
 }
 
@@ -186,6 +190,7 @@ function botSelectField() {
 
     let winnerLine = getPossibleLine(3, currentPlayer); // Gibt es eine Siegesreihe?
     if (winnerLine.length != 0) {       // Es gibt einen Gewinner
+        showWinningFields(winnerLine);
         endingGame();
         return;
     }
