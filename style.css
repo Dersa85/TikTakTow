@@ -47,6 +47,8 @@ table tr td:last-child {
 
 .field-setted {
     animation: marker-spawn 350ms running;
+    transition-duration: 325ms;
+    transition-property: filter;
 }
 
 .field-invisible {
@@ -96,6 +98,10 @@ td[class^='field-'] {
     text-shadow: 0 0 0.6rem #e8e6ff, 0 0 1.5rem #6f65ff,
     -0.2rem 0.1rem 1rem #6f65ff, 0.2rem 0.1rem 1rem #6f65ff,
     0 -0.5rem 2rem #3a24ff, 0 0.5rem 3rem #3a24ff;
+}
+
+.field-of-winning-row {
+    filter: brightness(3);
 }
 
 /* ------Animations ------- */

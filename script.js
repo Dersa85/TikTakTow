@@ -17,6 +17,7 @@ const fieldsCombinationsToWin = [
 
 const SWIGGLE_AUDIO = new Audio('./sound/swiggle.wav');
 const FADE_OUT_AUDIO = new Audio('./sound/fade_out.wav');
+const FIELD_LOCKED_AUDIO = new Audio('./sound/field_locked.wav');
 
 let isBotActive = false; // true - Spieler 2 ist ein Bot || false - Spieler 2 ist ein Mensch
 let gameOver = false;
@@ -36,6 +37,7 @@ function fieldPressed(fieldNumber) {
     // Welche Reihe hat gewonnen? Rückgabe [] oder z.B. [3,4,5] siehe Variable >fieldsCombinationsToWin<
     let winnerLine = getPossibleLine(3, currentPlayer); 
     if (winnerLine.length != 0) { // Gibt es einen Gewinner
+        showWinningFields(winnerLine);
         endingGame();
         return;
     }
@@ -80,6 +82,16 @@ function changeImgForUnsettedFields() {
 
     for (let i = 0; i < unsettedFields.length; i++) {
         unsettedFields[i].innerHTML = playerCharacter;
+    }
+}
+
+function showWinningFields(winningFields) {
+    for (let i = 0; i < winningFields.length; i++) {
+        setTimeout(() => {
+            let field = document.getElementById('field-' + winningFields[i]);
+            field.classList.add('field-of-winning-row');
+            FIELD_LOCKED_AUDIO.play()
+        }, 700 * (i+1));
     }
 }
 
