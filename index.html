@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <title>TikTakToe</title>
+    <title>Tik Tak Toe</title>
 </head>
 
 <body>
-
     <div id="game-sceen">
+        <h1>Tik Tak Toe</h1>
+        <h2 id="current-player-label" class="x-marker">Aktueller Spieler: X</h2>
+        
         <table id="table">
             <tr>
                 <td id="field-0" class="field-not-setted" onclick="fieldPressed(0)">X</td>
@@ -30,6 +32,8 @@
                 <td id="field-8" class="field-not-setted" onclick="fieldPressed(8)">X</td>
             </tr>
         </table>
+
+        <p class="button" onclick="reset()">🗘</p>
     </div>
 
 </body>
