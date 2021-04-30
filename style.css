@@ -45,8 +45,9 @@ table tr td:last-child {
 }
 
 .field-setted {
-    opacity: 1;
+    animation: marker-spawn 350ms running;
 }
+
 
 .field-invisible {
     opacity: 0;
@@ -62,10 +63,50 @@ table tr td:last-child {
 }
 
 td[class^='field-'] {
-    font-size: min(15vh, 15vw);
+    padding: 0;
+    font-size: min(10vh, 10vw);
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
     width: min(15vh, 15vw);
     height: min(15vh, 15vw);
     text-align: center;
     cursor: default;
     color: white;
+}
+
+/* ------Animations ------- */
+
+@keyframes marker-spawn {
+    0% {
+        font-size: 0px;
+        color: black;
+    }
+    40% {
+        color: black;
+    }
+    100% {
+        font-size: min(13vw, 13vh);
+        color: gray;
+    }
+}
+
+@keyframes swiggle {
+    0% {
+        transform: translateX(0);
+    }
+    15% {
+        transform: translateX(1rem);
+    }
+    35% {
+        transform: translateX(-1rem);
+    }
+    55% {
+        transform: translateX(1rem);
+    }
+    80% {
+        transform: translateX(0-1rem);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }

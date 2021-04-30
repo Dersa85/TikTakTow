@@ -18,6 +18,7 @@ const fieldsCombinationsToWin = [
 let isBotActive = false; // true - Spieler 2 ist ein Bot || false - Spieler 2 ist ein Mensch
 let gameOver = false;
 let currentPlayer = 1;
+let isAnimationPlaying = false;
 
 let markerCharacters = [    'X',    // Player 1
                             'O'     // Player 2
@@ -54,6 +55,8 @@ function setCurrentPlayerAsFieldOwner(fieldNumber) {
     field.classList.remove('field-not-setted');
     field.classList.remove('field-invisible');
     field.classList.add('field-setted');
+    isAnimationPlaying = true;
+    setTimeout(swiggleTable, 400);
 }
 
 function changeCurrentPlayer() {
@@ -145,7 +148,7 @@ function isOwnerOnField(fieldNumber, player) {
 
 function userCanSet() {
     // Überprüft ob das setzen einer Markiereung für den Benutzer erlaubt ist.
-    return !(gameOver || (isBotActive && currentPlayer == 2));
+    return !( gameOver || (isBotActive && currentPlayer == 2) || isAnimationPlaying );
 }
 
 function isFieldFree(fieldNumber) {
@@ -220,3 +223,13 @@ function getRandomFreeField() {
     return freeFields[randomInt];
 }
 
+/* Funktionen für Animation */
+
+function swiggleTable() {
+    // Schüttelt das Brett 
+    document.getElementById('table').style = 'animation: swiggle 225ms;';
+    setTimeout(() => {
+        document.getElementById('table').style = '';
+        isAnimationPlaying = false;
+    }, 225);
+}
