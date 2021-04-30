@@ -15,6 +15,9 @@ const fieldsCombinationsToWin = [
     [2, 4, 6]
 ]; // Kombinationen der Felder um zu gewinnen
 
+const SWIGGLE_AUDIO = new Audio('./sound/swiggle.wav');
+const FADE_OUT_AUDIO = new Audio('./sound/fade_out.wav');
+
 let isBotActive = false; // true - Spieler 2 ist ein Bot || false - Spieler 2 ist ein Mensch
 let gameOver = false;
 let currentPlayer = 1;
@@ -56,6 +59,7 @@ function setCurrentPlayerAsFieldOwner(fieldNumber) {
     field.classList.remove('field-invisible');
     field.classList.add('field-setted');
     isAnimationPlaying = true;
+    FADE_OUT_AUDIO.play();
     setTimeout(swiggleTable, 400);
 }
 
@@ -228,6 +232,7 @@ function getRandomFreeField() {
 function swiggleTable() {
     // Schüttelt das Brett 
     document.getElementById('table').style = 'animation: swiggle 225ms;';
+    SWIGGLE_AUDIO.play();
     setTimeout(() => {
         document.getElementById('table').style = '';
         isAnimationPlaying = false;
