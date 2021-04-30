@@ -3,8 +3,9 @@ body {
 }
 
 h1 {
+    margin-top: 0;
     font-size: min(6vh, 6vw);
-    color: rgb(16, 207, 9);
+    color: rgb(16, 150, 12);
     text-decoration: underline;
     background-image: radial-gradient(
         ellipse 70% 70% at 70% 70%,
@@ -84,6 +85,7 @@ table tr td:last-child {
     background-size: contain;
     animation: scrolling-background 30s ease-in-out infinite;
     animation-direction: alternate;
+    justify-content: center;
 }
 
 td[class^='field-'] {
@@ -91,8 +93,8 @@ td[class^='field-'] {
     font-size: min(10vh, 10vw);
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
-    width: min(15vh, 15vw);
-    height: min(15vh, 15vw);
+    width: min(18vh, 18vw);
+    height: min(18vh, 18vw);
     text-align: center;
     cursor: default;
 }
@@ -117,6 +119,15 @@ td[class^='field-'] {
     0 -0.5rem 2rem #3a24ff, 0 0.5rem 3rem #3a24ff;
 }
 
+.bot-active {
+    background-image: radial-gradient(
+        ellipse 50% 50% at 50% 50%,
+        #18686b, transparent);
+    text-shadow: 0 0 0.6rem #e6fffe, 0 0 1.5rem #65ffff,
+    -0.2rem 0.1rem 1rem #65f5ff, 0.2rem 0.1rem 1rem #65ffff,
+    0 -0.5rem 2rem #24ffff, 0 0.5rem 3rem #24f8ff;
+}
+
 .field-of-winning-row {
     filter: brightness(3);
 }
@@ -125,6 +136,10 @@ td[class^='field-'] {
     font-size: min(4vh, 4vw);
     color: white;
     cursor: pointer;
+    margin-top: 1vh;
+    margin-bottom: 0;
+    height: min(5vh, 5vw);
+    transition: all 325ms;
 }
 
 /* ------Animations ------- */
@@ -167,9 +182,17 @@ td[class^='field-'] {
 
 @keyframes scrolling-background {
     from {
-        background-position-x: -250%;
+        background-position-x: -500px;
     }
     to {
-        background-position-x: 250%;
+        background-position-x: 500px;
+    }
+}
+
+@media (max-width: 700px) and (orientation: portrait) {
+    .button {
+        font-size: min(10vh, 10vw);
+        height: min(14vh, 14vw);
+        margin-top: 2vh;
     }
 }

@@ -19,6 +19,7 @@ const SWIGGLE_AUDIO = new Audio('./sound/swiggle.wav');
 const FADE_OUT_AUDIO = new Audio('./sound/fade_out.wav');
 const FIELD_LOCKED_AUDIO = new Audio('./sound/field_locked.wav');
 const RESET_AUDIO = new Audio('./sound/reset.wav');
+const BOT_BUTTON_AUDIO = new Audio('./sound/bot_button.mp3');
 
 let timerFunctions = [];
 
@@ -31,17 +32,15 @@ let markerCharacters = [    'X',    // Player 1
                             'O'     // Player 2
 ];
 
-function reset() {
-    RESET_AUDIO.play();
-    newGame();
-}
 
 function newGame() {
+    RESET_AUDIO.play();
     resetFields();
     gameOver = false
     currentPlayer = 2; // Erst den Player auf 2 setzen damit...
     changeCurrentPlayer(); // ...hier alles auf den default Zustand kommt
     changeCharForUnsettedFields();
+    document.getElementById('bot-button').innerHTML = '💻';
 }
 
 function fieldPressed(fieldNumber) {
@@ -49,7 +48,10 @@ function fieldPressed(fieldNumber) {
         return;
     }
     setCurrentPlayerAsFieldOwner(fieldNumber); // Markiert das Feld für den Spieler
-
+    
+    // Versteckt Button um den Bot zu aktivieren/deaktivieren
+    document.getElementById('bot-button').innerHTML = '';
+    
     // Welche Reihe hat gewonnen? Rückgabe [] oder z.B. [3,4,5] siehe Variable >fieldsCombinationsToWin<
     let winnerLine = getPossibleLine(3, currentPlayer); 
     if (winnerLine.length != 0) { // Gibt es einen Gewinner
@@ -67,7 +69,7 @@ function fieldPressed(fieldNumber) {
         deactivateMouseover();
         setTimeout(() => {
             botSelectField();
-        }, 600);
+        }, 800);
     }
 }
 
@@ -218,6 +220,16 @@ function resetFields() {
     }
 }
 
+function botButtonPressed() {
+    BOT_BUTTON_AUDIO.play();
+    isBotActive = !isBotActive;
+    if (isBotActive) {
+        document.getElementById('bot-button').classList.add('bot-active');
+    } else {
+        document.getElementById('bot-button').classList.remove('bot-active');
+    }
+}
+
 /* Funktionen nur für den Bot */
 
 function botSelectField() {
@@ -296,5 +308,6 @@ function swiggleTable() {
     setTimeout(() => {
         document.getElementById('table').style = '';
         isAnimationPlaying = false;
+        
     }, 325);
 }
