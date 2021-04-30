@@ -1,11 +1,11 @@
 body {
-    background-color: rgb(29, 28, 66);
+    background-image: url('./img/background.jpg');
 }
 
 /* draw playing field grid*/
 
 table {
-    background-color: rgb(96, 93, 190);
+    background-color: transparent;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -13,7 +13,7 @@ table {
 }
 
 table td {
-    border: 5px solid black;
+    border: 5px solid white;
 }
 
 table tr:first-child td {
@@ -42,12 +42,12 @@ table tr td:last-child {
 .field-not-setted:hover {
     opacity: 0.2;
     cursor: pointer;
+    color: white;
 }
 
 .field-setted {
     animation: marker-spawn 350ms running;
 }
-
 
 .field-invisible {
     opacity: 0;
@@ -71,7 +71,26 @@ td[class^='field-'] {
     height: min(15vh, 15vw);
     text-align: center;
     cursor: default;
-    color: white;
+}
+
+.x-marker {
+    color: red;
+    background-image: radial-gradient(
+        ellipse 50% 50% at 50% 50%,
+        #6b1839, transparent);
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+    0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+}
+
+.o-marker {
+    color: blue;
+    background-image: radial-gradient(
+        ellipse 50% 50% at 50% 50%,
+        #19186b, transparent);
+    text-shadow: 0 0 0.6rem #e8e6ff, 0 0 1.5rem #6f65ff,
+    -0.2rem 0.1rem 1rem #6f65ff, 0.2rem 0.1rem 1rem #6f65ff,
+    0 -0.5rem 2rem #3a24ff, 0 0.5rem 3rem #3a24ff;
 }
 
 /* ------Animations ------- */

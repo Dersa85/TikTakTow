@@ -58,6 +58,12 @@ function setCurrentPlayerAsFieldOwner(fieldNumber) {
     field.classList.remove('field-not-setted');
     field.classList.remove('field-invisible');
     field.classList.add('field-setted');
+    if (currentPlayer == 1) {
+        field.classList.add('x-marker');
+    } else {
+        field.classList.add('o-marker');
+    }
+
     isAnimationPlaying = true;
     FADE_OUT_AUDIO.play();
     setTimeout(swiggleTable, 400);
