@@ -13,25 +13,48 @@
 <body>
     <div id="game-sceen">
         <h1>Tik Tak Toe</h1>
-        <h2 id="current-player-label" class="x-marker">Aktueller Spieler: X</h2>
-        
-        <table id="table">
-            <tr>
-                <td id="field-0" class="field-not-setted" onclick="fieldPressed(0)">X</td>
-                <td id="field-1" class="field-not-setted" onclick="fieldPressed(1)">X</td>
-                <td id="field-2" class="field-not-setted" onclick="fieldPressed(2)">X</td>
-            </tr>
-            <tr>
-                <td id="field-3" class="field-not-setted" onclick="fieldPressed(3)">X</td>
-                <td id="field-4" class="field-not-setted" onclick="fieldPressed(4)">X</td>
-                <td id="field-5" class="field-not-setted" onclick="fieldPressed(5)">X</td>
-            </tr>
-            <tr>
-                <td id="field-6" class="field-not-setted" onclick="fieldPressed(6)">X</td>
-                <td id="field-7" class="field-not-setted" onclick="fieldPressed(7)">X</td>
-                <td id="field-8" class="field-not-setted" onclick="fieldPressed(8)">X</td>
-            </tr>
-        </table>
+        <div class="main-content">
+
+            <div class="counter-container-heigt">
+                <div>
+                    <h2 id="player-1-counter-header-height" class="x-marker counter-header">X</h2>
+                    <p id="player-1-counter-height" class="x-marker counter">0</p>
+                </div>
+                <div>
+                    <h2 id="player-2-counter-header-height" class="o-marker counter-header">O</h2>
+                    <p id="player-2-counter-height" class="o-marker counter">0</p>
+                </div>
+            </div>
+
+            <div class="counter-container-width">
+                <h2 id="player-1-counter-header-width" class="x-marker counter-header">X</h2>
+                <p id="player-1-counter-width" class="x-marker counter">0</p>
+            </div>
+            
+            <table id="table">
+                <tr>
+                    <td id="field-0" class="field-not-setted" onclick="fieldPressed(0)">X</td>
+                    <td id="field-1" class="field-not-setted" onclick="fieldPressed(1)">X</td>
+                    <td id="field-2" class="field-not-setted" onclick="fieldPressed(2)">X</td>
+                </tr>
+                <tr>
+                    <td id="field-3" class="field-not-setted" onclick="fieldPressed(3)">X</td>
+                    <td id="field-4" class="field-not-setted" onclick="fieldPressed(4)">X</td>
+                    <td id="field-5" class="field-not-setted" onclick="fieldPressed(5)">X</td>
+                </tr>
+                <tr>
+                    <td id="field-6" class="field-not-setted" onclick="fieldPressed(6)">X</td>
+                    <td id="field-7" class="field-not-setted" onclick="fieldPressed(7)">X</td>
+                    <td id="field-8" class="field-not-setted" onclick="fieldPressed(8)">X</td>
+                </tr>
+            </table>
+
+            <div class="counter-container-width">
+                <h2 id="player-2-counter-header-width" class="o-marker counter-header">O</h2>
+                <p id="player-2-counter-width" class="o-marker counter">0</p>
+            </div>
+
+        </div>
 
         <p class="button" onclick="newGame()">🔄</p>
         <p id="bot-button" class="button bot-active" onclick="botButtonPressed()">💻</p>

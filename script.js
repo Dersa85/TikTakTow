@@ -94,13 +94,13 @@ function setCurrentPlayerAsFieldOwner(fieldNumber) {
 function changeCurrentPlayer() {
     // Wechselt den Aktuellen Spieler und ändert die Anzeige dafür
     currentPlayer = getAnotherPlayerNumber(currentPlayer);
-    let label = document.getElementById('current-player-label');
-    let markerCurrentPlayer = markerCharacters[currentPlayer - 1];
-    let markerAnotherPlayer = markerCharacters[getAnotherPlayerNumber(currentPlayer) - 1]
-    label.innerHTML = `Aktueller Spieler: ${markerCurrentPlayer}`;
-    label.classList.add(`${markerCurrentPlayer.toLowerCase()}-marker`);
-    label.classList.remove(`${markerAnotherPlayer.toLowerCase()}-marker`);
+    let anotherPlayer = getAnotherPlayerNumber(currentPlayer);
+    document.getElementById(`player-${currentPlayer}-counter-header-height`).classList.add('field-of-winning-row');
+    document.getElementById(`player-${anotherPlayer}-counter-header-height`).classList.remove('field-of-winning-row');
+    document.getElementById(`player-${currentPlayer}-counter-header-width`).classList.add('field-of-winning-row');
+    document.getElementById(`player-${anotherPlayer}-counter-header-width`).classList.remove('field-of-winning-row');
 }
+
 
 function changeCharForUnsettedFields() {
     // Ändert die img.src passend zum aktuellen Spieler
@@ -113,6 +113,11 @@ function changeCharForUnsettedFields() {
 }
 
 function showWinningFields(winningFields) {
+    let winCounterH = document.getElementById(`player-${currentPlayer}-counter-height`);
+    let winCounterW = document.getElementById(`player-${currentPlayer}-counter-width`);
+    let counter = +winCounterH.innerHTML + 1;
+    winCounterH.innerHTML = counter;
+    winCounterW.innerHTML = counter;
     for (let i = 0; i < winningFields.length; i++) {
         setTimeout(() => {
             if (gameOver) { // false ist wenn es einen reset gab

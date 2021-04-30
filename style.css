@@ -15,17 +15,12 @@ h1 {
     0 -0.5rem 2rem #d0ff24, 0 0.5rem 3rem #d0ff24;
 }
 
-h2 {
-    font-size: min(4vh, 4vw);
-}
 
 /* draw playing field grid*/
 
 table {
     background-color: rgba(255, 255, 255, 0.07);
     border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
     border-radius: 16px;
 }
 
@@ -142,6 +137,27 @@ td[class^='field-'] {
     transition: all 325ms;
 }
 
+.main-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.counter-header {
+    font-size: min(10vh, 10vw);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.counter {
+    text-align: center;
+    font-size: min(4vh, 4vw);
+}
+.counter-container-heigt {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
 /* ------Animations ------- */
 
 @keyframes marker-spawn {
@@ -195,4 +211,19 @@ td[class^='field-'] {
         height: min(14vh, 14vw);
         margin-top: 2vh;
     }
+    .counter-container-width {
+        display: none;
+    }
+
+    
+    .main-content {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 700px) {
+    .counter-container-heigt {
+        display: none;
+    }
+    
 }
