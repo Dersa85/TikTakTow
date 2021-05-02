@@ -78,8 +78,7 @@ table tr td:last-child {
     background-image: url('./img/background.jpg');
     background-repeat: repeat;
     background-size: contain;
-    animation: scrolling-background 30s ease-in-out infinite;
-    animation-direction: alternate;
+    animation: scrolling-background 75s linear infinite;
     justify-content: center;
 }
 
@@ -198,10 +197,10 @@ td[class^='field-'] {
 
 @keyframes scrolling-background {
     from {
-        background-position-x: -500px;
+        background-position-y: 0;
     }
     to {
-        background-position-x: 500px;
+        background-position-y: -100vh;
     }
 }
 
