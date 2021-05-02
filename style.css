@@ -178,16 +178,16 @@ td[class^='field-'] {
         transform: translateX(0);
     }
     15% {
-        transform: translateX(1rem);
+        transform: translateX(0.7rem);
     }
     35% {
-        transform: translateX(-1rem);
+        transform: translateX(-0.7rem);
     }
     55% {
-        transform: translateX(1rem);
+        transform: translateX(0.7rem);
     }
     80% {
-        transform: translateX(-1rem);
+        transform: translateX(-0.7rem);
     }
     100% {
         transform: translateX(0);
